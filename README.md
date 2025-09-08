@@ -80,19 +80,19 @@ ssh git@git.ardis.lu rm <repository_name>
 
 To reverse the steps in `setup.sh`.
 
-3. (From another computer) Use the `rm` helper script to delete all repos:
+1. (From another computer) Use the `rm` helper script to delete all repos:
 
 ```
 ssh git@git.ardis.lu rm <repository_name>
 ```
 
-4. Delete the `git` user and its home directory `/srv/git`:
+2. Delete the `git` user and its home directory `/srv/git`:
 
 ```
 sudo deluser --remove-home git
 ```
 
-5. (Optional) Delete `git-shell` from `/etc/shells`:
+3. (Optional) Delete `git-shell` from `/etc/shells`:
 
 ```
 sudo vim /etc/shells
