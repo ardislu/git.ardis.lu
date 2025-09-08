@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Require a name to be provided
+if [ $# -lt 1 ]; then
+  echo "Usage: rm <repository_name>" >&2
+  exit 1
+fi
+
+name="$1"
+path="$HOME/$name.git"
+
+if ! [ -e "$path" ]; then
+  echo "Error: repository '$name' does not exist" >&2
+  exit 1
+fi
+
+# Remove scheduled maintenance from init script
+# Commented out because git maintenance start is not automatically started
+# cd "$path"
+# git maintenance stop
+# git maintenance unregister --force
+# cd "$HOME"
+
+rm -r "$path"
+
+echo "Repository '$name' deleted"

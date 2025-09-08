@@ -1,0 +1,23 @@
+# This file is for reference purposes only, it is not actually used on the server.
+# Use this systemd unit to enable cloning via `git://` protocol.
+
+[Unit]
+Description=Git Daemon
+Documentation=man:git-daemon(1)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=git
+Group=git
+ExecStart=/usr/bin/git daemon --reuseaddr --base-path=/srv/git
+Restart=on-failure
+
+# Security hardening
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

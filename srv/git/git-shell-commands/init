@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+# Require a name to be provided
+if [ $# -lt 1 ]; then
+  echo "Usage: init <repository_name> [repository_description]" >&2
+  exit 1
+fi
+
+user='git'
+hostname='git.ardis.lu'
+
+name="$1"
+
+# Interpret all remaining arguments as the description. Importantly, passing a command like:
+#   ssh git@git.ardis.lu init example_name "example description with spaces"
+# will NOT preserve the quotes when passed to the bash command (i.e., each word is interpreted
+# as a separate argument). As a workaround, just interpret all remaining arguments as the description.
+# See https://stackoverflow.com/a/53472697/21084807
+shift 1
+description="$@"
+
+# Check repo name is valid using the same convention as GitHub
+# See https://stackoverflow.com/a/59082561/21084807
+pattern='^[A-Za-z0-9_\.\-]+$'
+if ! [[ "$name" =~ $pattern ]]; then
+  echo "Error: invalid repository name '$name'" >&2
+  exit 1
+fi
+
+path="$HOME/$name.git"
+
+# Prevent overwriting an existing repo
+if [ -e "$path" ]; then
+  echo "Error: repository '$name' already exists" >&2
+  exit 1
+fi
+
+# Instantiate the repo
+mkdir -p "$path"
+cd "$path"
+git init --bare --quiet
+
+# Schedule and enable maintenance jobs
+# Commented out to simplify administration (not dealing with cron jobs to remove repos)
+# git maintenance start
+
+# Create post-update hook for dumb HTTP transport and general maintenance
+# See https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_dumb_http)
+# See https://git-scm.com/docs/git-maintenance
+# See https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery
+cat > "$path/hooks/post-update" << EOL
+#!/bin/sh
+git update-server-info
+git maintenance run
+EOL
+chmod a+x "$path/hooks/post-update"
+
+# Add git-daemon-export-ok file to support git protocol
+# Commented out because git-daemon is not enabled on the server
+# See https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_git_protocol
+# touch "$path/git-daemon-export-ok"
+
+# Set clone URLs to show on the git web view
+cat > "$path/cloneurl" << EOL
+https://$hostname/$name.git
+ssh://$user@$hostname/~/$name.git
+$user@$hostname:$name.git
+EOL
+
+# Set description if it was provided
+if [ -n "$description" ]; then
+  echo "$description" >"$path/description"
+fi
+
+echo "Repository '$name' created"

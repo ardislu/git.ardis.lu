@@ -1,0 +1,31 @@
+git.ardis.lu {
+  root /usr/share/gitweb
+  encode
+  file_server
+
+  # For root, serve gitweb for human-friendly browsing
+  reverse_proxy / unix//run/fcgiwrap.socket {
+    transport fastcgi {
+      env SCRIPT_FILENAME /usr/share/gitweb/gitweb.cgi
+    }
+  }
+
+  # For /[name] and /[name].git WITHOUT additional paths, redirect to /?p=[name].git for human-friendly browsing
+  @git_bare path_regexp ^(\/)([A-Za-z0-9_.-]+?)(\.git)?$
+  redir @git_bare /?p={re.2}.git
+
+  # For /[name].git WITH additional paths, serve git-http-backend to support git operations
+  # {method}, {path}, {query} are magic Caddy variables which correspond to the URL
+  # components from the request.
+  @git_backend path_regexp ^\/[A-Za-z0-9_.-]+\.git\/.*$
+  reverse_proxy @git_backend unix//run/fcgiwrap.socket {
+    transport fastcgi {
+      env SCRIPT_FILENAME /usr/lib/git-core/git-http-backend
+      env GIT_PROJECT_ROOT /srv/git
+      env GIT_HTTP_EXPORT_ALL 1 # Can be any value, but it must be set to allow serving over HTTP
+      env REQUEST_METHOD {method}
+      env PATH_INFO {path}
+      env QUERY_STRING {query}
+    }
+  }
+}
