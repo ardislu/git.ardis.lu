@@ -35,8 +35,9 @@ git config --system safe.directory '*'
 git config --system init.defaultBranch main
 
 # Setup gitweb
-systemctl enable --now fcgiwrap
+cp -f ./etc/gitweb.conf /etc
 cp -f ./etc/caddy/Caddyfile /etc/caddy
+systemctl enable --now fcgiwrap
 systemctl restart caddy
 
 # Below steps for configuring git-daemon are for reference only.
