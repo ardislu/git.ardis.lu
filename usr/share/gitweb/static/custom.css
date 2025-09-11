@@ -1,0 +1,50 @@
+body {
+  font-size: 16px;
+  min-inline-size: min(100% - 22px, 1440px);
+  inline-size: fit-content;
+  margin-inline: auto;
+}
+
+table.project_list,
+table.shortlog,
+table.tags,
+table.heads,
+table.tree,
+table.history,
+table.commit_search,
+table.search {
+  inline-size: 100%;
+}
+
+table.project_list {
+  & th,
+  td {
+    line-height: 2;
+    padding-block: 8px;
+    padding-inline: 4px 16px;
+  }
+}
+
+/* Gitweb replaces all spaces in commit descriptions (log) with &nbsp; which will not wrap by default. */
+div.log,
+div.log_body,
+div.page_body {
+  overflow-wrap: break-word;
+  /* Otherwise body will stretch to fit longest line. */
+  max-inline-size: min(100dvi - 38px, 1440px);
+}
+
+div.log_body {
+  padding: 8px;
+}
+
+td.link,
+td.selflink {
+  font-size: 80%;
+}
+
+td.pre,
+div.pre,
+div.diff {
+  font-size: 14px;
+}

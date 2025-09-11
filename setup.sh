@@ -34,6 +34,16 @@ git config --system safe.directory '*'
 # Otherwise HEAD will point to "master" when using init, even if the pushed repo has renamed main branch
 git config --system init.defaultBranch main
 
+# Better git defaults
+# See https://blog.gitbutler.com/how-git-core-devs-configure-git
+git config --system column.ui auto
+git config --system branch.sort -committerdate
+git config --system tag.sort version:refname
+git config --system diff.algorithm histogram
+git config --system diff.colorMoved plain
+git config --system diff.mnemonicPrefix true
+git config --system diff.renames true
+
 # Setup gitweb
 cp -f ./etc/gitweb.conf /etc
 cp -f ./etc/caddy/Caddyfile /etc/caddy
