@@ -44,13 +44,15 @@ git init --bare --quiet
 # Commented out to simplify administration (not dealing with cron jobs to remove repos)
 # git maintenance start
 
-# Create post-update hook for dumb HTTP transport and general maintenance
+# Create post-update hook for dumb HTTP transport, generating README for summary view,
+# and general maintenance.
 # See https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_dumb_http)
 # See https://git-scm.com/docs/git-maintenance
 # See https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery
 cat > "$path/hooks/post-update" << EOL
 #!/bin/sh
 git update-server-info
+git cat-file blob HEAD:README.md | comrak > $GIT_DIR/README.html
 git maintenance run
 EOL
 chmod a+x "$path/hooks/post-update"

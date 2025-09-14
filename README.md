@@ -16,12 +16,15 @@ sudo apt install git gitweb highlight ufw fcgiwrap
 
 See [Caddy: Install](https://caddyserver.com/docs/install) for directions on installing `caddy`.
 
+See [Comrak](https://github.com/kivikakk/comrak) for installing `comrak`.
+
 Explanation:
 - `git`, `gitweb` are naturally required.
 - `highlight` for code syntax highlighting on the web view.
 - `ufw` for setting up firewall rules (can substitute with whatever you like).
 - `fcgiwrap` to call the `gitweb` and `git-http-backend` FastCGI scripts.
 - `caddy` for the web server to serve the web view and repos over HTTPS.
+- `comrak` for rendering `README.md` as close to GitHub as possible.
 
 2. Clone this repo somewhere on the server.
 
