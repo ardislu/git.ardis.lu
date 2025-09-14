@@ -50,10 +50,20 @@ table.project_list {
 /* Gitweb replaces all spaces in commit descriptions (log) with &nbsp; which will not wrap by default. */
 div.log,
 div.log_body,
-div.page_body {
+div.page_body,
+div.readme {
   overflow-wrap: break-word;
   /* Otherwise body will stretch to fit longest line. */
   max-inline-size: min(100dvi - 38px, 1440px);
+}
+
+div.title_text {
+  display: flex;
+  align-items: center;
+}
+
+div.log_link {
+  width: unset;
 }
 
 div.log_body {
@@ -63,6 +73,10 @@ div.log_body {
 td.link,
 td.selflink {
   font-size: 80%;
+}
+
+td.selflink {
+  width: 0;
 }
 
 td.pre,
