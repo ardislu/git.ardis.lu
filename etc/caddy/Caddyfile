@@ -1,4 +1,9 @@
 git.ardis.lu {
+  header {
+    Content-Security-Policy "object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
+    X-Content-Type-Options nosniff
+  }
+
   root /usr/share/gitweb
   encode
   file_server
