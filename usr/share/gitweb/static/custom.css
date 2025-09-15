@@ -16,7 +16,8 @@ td.pre,
 div.pre,
 div.diff,
 td.mode,
-td.size {
+td.size,
+div.readme code {
   font-family: "Source Code Pro", ui-monospace, monospace;
 }
 
@@ -64,6 +65,14 @@ div.readme {
     background: hsl(0deg 0% 95%);
     padding: 1px 3px 2px;
     hyphens: none;
+  }
+
+  & li {
+    margin-block: 4px;
+
+    & code {
+      font-size: 0.9rem;
+    }
   }
 
   & pre {
