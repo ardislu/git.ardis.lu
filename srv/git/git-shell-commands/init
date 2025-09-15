@@ -52,7 +52,7 @@ git init --bare --quiet
 cat > "$path/hooks/post-update" << EOL
 #!/bin/sh
 git update-server-info
-git cat-file blob HEAD:README.md | comrak > $GIT_DIR/README.html
+git cat-file blob HEAD:README.md | comrak --gfm > $GIT_DIR/README.html
 git maintenance run
 EOL
 chmod a+x "$path/hooks/post-update"
