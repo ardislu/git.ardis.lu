@@ -40,6 +40,7 @@ table.search {
 }
 
 table.project_list {
+
   & th,
   td {
     line-height: 2;
@@ -77,6 +78,20 @@ div.readme {
 
   & pre {
     padding: 8px 12px;
+  }
+
+  & table {
+    border-collapse: collapse;
+  }
+
+  & th,
+  & td {
+    padding: 8px;
+    border: 1px solid hsl(216deg 50% 10% / 0.5);
+  }
+
+  & tr:nth-child(even) {
+    background-color: hsl(216deg 50% 97% / 0.45);
   }
 }
 
