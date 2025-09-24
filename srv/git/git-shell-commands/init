@@ -46,13 +46,14 @@ git init --bare --quiet
 
 # Create post-update hook for dumb HTTP transport, generating README for summary view,
 # and general maintenance.
-# See https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_dumb_http)
+# See https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_dumb_http
 # See https://git-scm.com/docs/git-maintenance
 # See https://git-scm.com/book/en/v2/Git-Internals-Maintenance-and-Data-Recovery
+# Do not use $GIT_DIR, see https://stackoverflow.com/q/53121208/21084807
 cat > "$path/hooks/post-update" << EOL
 #!/bin/sh
 git update-server-info
-git cat-file blob HEAD:README.md | comrak --gfm > $GIT_DIR/README.html
+git cat-file blob HEAD:README.md | comrak --gfm > "$(git rev-parse --git-common-dir)/README.html"
 git maintenance run
 EOL
 chmod a+x "$path/hooks/post-update"
