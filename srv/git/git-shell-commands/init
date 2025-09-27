@@ -75,4 +75,9 @@ if [ -n "$description" ]; then
   echo "$description" >"$path/description"
 fi
 
+# Set up symlink so /$name --> /$name.git
+# This is needed to drop the ".git" suffix on the web view
+ln -s "$path" "$HOME/$name"
+echo "$name" >>"$HOME/projects_list.txt"
+
 echo "Repository '$name' created"

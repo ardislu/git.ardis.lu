@@ -21,6 +21,8 @@ fi
 # git maintenance unregister --force
 # cd "$HOME"
 
+sed -i "/^$name\$/d" "$HOME/projects_list.txt"
+rm "$HOME/$name"
 rm -r "$path"
 
 echo "Repository '$name' deleted"

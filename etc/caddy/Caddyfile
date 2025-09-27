@@ -15,9 +15,9 @@ git.ardis.lu {
     }
   }
 
-  # For /[name] and /[name].git WITHOUT additional paths, redirect to /?p=[name].git for human-friendly browsing
+  # For /[name] and /[name].git WITHOUT additional paths, redirect to /?p=[name] for human-friendly browsing
   @git_bare path_regexp ^(\/)([A-Za-z0-9_.-]+?)(\.git)?$
-  redir @git_bare /?p={re.2}.git
+  redir @git_bare /?p={re.2}
 
   # For /[name].git WITH additional paths, serve git-http-backend to support git operations
   # {method}, {path}, {query} are magic Caddy variables which correspond to the URL
