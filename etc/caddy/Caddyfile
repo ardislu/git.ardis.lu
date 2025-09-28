@@ -1,6 +1,8 @@
 git.ardis.lu {
   header {
-    Content-Security-Policy "object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
+    Content-Security-Policy "require-trusted-types-for 'script'; object-src 'none'; base-uri 'self'; frame-ancestors 'none';"
+    Cross-Origin-Opener-Policy same-origin
+    Cross-Origin-Embedder-Policy require-corp
     X-Content-Type-Options nosniff
   }
 
