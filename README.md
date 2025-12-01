@@ -19,9 +19,10 @@ See [Caddy: Install](https://caddyserver.com/docs/install) for directions on ins
 See [Comrak](https://github.com/kivikakk/comrak) for installing `comrak`.
 
 Explanation:
-- `git`, `gitweb` are naturally required.
+- `git` is naturally required.
+- `gitweb` is the chosen web frontend for maximum simplicity.
 - `highlight` for code syntax highlighting on the web view.
-- `ufw` for setting up firewall rules (can substitute with whatever you like).
+- `ufw` for setting up firewall rules.
 - `fcgiwrap` to call the `gitweb` and `git-http-backend` FastCGI scripts.
 - `caddy` for the web server to serve the web view and repos over HTTPS.
 - `comrak` for rendering `README.md` as close to GitHub as possible.
