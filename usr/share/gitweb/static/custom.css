@@ -78,6 +78,7 @@ div.readme {
 
   & pre {
     padding: 16px;
+    overflow-x: auto;
   }
 
   & table {
