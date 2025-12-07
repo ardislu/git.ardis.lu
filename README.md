@@ -68,6 +68,8 @@ A minimal set of administrative commands.
 
 Create a new repo and optionally set its description for the web view.
 
+Single quote characters (`'`) MUST be escaped using a backslash.
+
 ```
 ssh git@git.ardis.lu init <repository_name> [repository_description]
 ```
