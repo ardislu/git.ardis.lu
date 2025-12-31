@@ -125,3 +125,8 @@ div.pre,
 div.diff {
   font-size: 14px;
 }
+
+div.diff:is(.header, .extended_header, .from_file, .to_file, .chunk_header) {
+  inset-inline-start: 0;
+  position: sticky;
+}
