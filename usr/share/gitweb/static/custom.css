@@ -53,7 +53,8 @@ table.project_list {
 div.log,
 div.log_body,
 div.page_body,
-div.readme {
+div.readme,
+div.patch {
   overflow-wrap: break-word;
   /* Otherwise body will stretch to fit longest line. */
   max-inline-size: min(100dvi - 38px, 1440px);
