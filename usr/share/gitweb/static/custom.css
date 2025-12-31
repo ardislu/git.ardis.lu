@@ -55,6 +55,7 @@ div.log_body,
 div.page_body,
 div.readme,
 div.patch {
+  overflow: auto;
   overflow-wrap: break-word;
   /* Otherwise body will stretch to fit longest line. */
   max-inline-size: min(100dvi - 38px, 1440px);
