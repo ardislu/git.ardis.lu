@@ -49,6 +49,10 @@ table.project_list {
   }
 }
 
+div.page_header {
+  height: unset;
+}
+
 /* Gitweb replaces all spaces in commit descriptions (log) with &nbsp; which will not wrap by default. */
 div.log,
 div.log_body,
