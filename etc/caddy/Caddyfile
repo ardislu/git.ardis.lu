@@ -4,6 +4,7 @@ git.ardis.lu {
     Cross-Origin-Opener-Policy same-origin
     Cross-Origin-Embedder-Policy require-corp
     X-Content-Type-Options nosniff
+    Cache-Control "max-age=3600, stale-while-revalidate=604800, stale-if-error=604800"
   }
 
   root /usr/share/gitweb
