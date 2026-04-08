@@ -53,7 +53,7 @@ git init --bare --quiet
 cat > "$path/hooks/post-update" << EOL
 #!/bin/sh
 git update-server-info
-git cat-file blob HEAD:README.md | comrak --gfm --syntax-highlighting InspiredGitHub > "$(git rev-parse --git-common-dir)/README.html"
+git cat-file blob HEAD:README.md | comrak --gfm --syntax-highlighting base16-ocean.light > "$(git rev-parse --git-common-dir)/README.html"
 git maintenance run
 EOL
 chmod a+x "$path/hooks/post-update"
