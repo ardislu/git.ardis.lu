@@ -80,4 +80,9 @@ fi
 ln -s "$path" "$HOME/$name"
 echo "$name" >>"$HOME/projects_list.txt"
 
-echo "Repository '$name' created"
+echo "Repository '$name' successfully created!"
+echo ''
+echo 'Run this command to add it as a new git remote:'
+echo "  git remote add git.ardis.lu ssh://git@git.ardis.lu/~/$name.git"
+echo ''
+echo "Or visit the web view at https://git.ardis.lu/$name"
