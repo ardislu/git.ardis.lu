@@ -28,19 +28,31 @@ body {
   margin-inline: auto;
 }
 
-input[name="s"] {
-  font-size: 16px;
-  padding: 4px;
-  border: 1px solid hsl(216deg 20% 50%);
-  border-radius: 4px;
+input {
   outline: 2px solid transparent;
   outline-offset: 1px;
   transition: outline-color 400ms;
 }
 
-input[name="s"]:focus-within {
+input:focus-within {
   transition: outline-color 200ms;
   outline-color: hsl(216deg 50% 40%);
+}
+
+input[name="s"],
+input[name="btnS"] {
+  font-size: 16px;
+  border: 1px solid hsl(216deg 20% 50%);
+  border-radius: 4px;
+}
+
+input[name="s"] {
+  padding: 4px;
+}
+
+input[name="btnS"] {
+  padding: 4px 6px;
+  cursor: pointer;
 }
 
 table.project_list,
