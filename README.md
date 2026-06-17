@@ -37,10 +37,11 @@ Explanation:
 sudo ./setup.sh
 ```
 
-5. Open port 443 to allow access over HTTPS:
+5. Open port 443 to allow access over HTTPS (UDP for HTTP/3):
 
 ```
 sudo ufw allow "WWW Secure"
+sudo ufw allow 443/udp
 ```
 
 ## View and clone repos
