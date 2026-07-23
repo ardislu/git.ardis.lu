@@ -161,3 +161,39 @@ div.diff:is(.header, .extended_header, .from_file, .to_file, .chunk_header) {
   inset-inline-start: 0;
   position: sticky;
 }
+
+.markdown-alert-note {
+  --alert-color: #0969da;
+}
+
+.markdown-alert-tip {
+  --alert-color: #1a7f37;
+}
+
+.markdown-alert-important {
+  --alert-color: #8250df;
+}
+
+.markdown-alert-warning {
+  --alert-color: #9a6700;
+}
+
+.markdown-alert-caution {
+  --alert-color: #cf222e;
+}
+
+.markdown-alert {
+  padding: 8px 16px;
+  margin-block-end: 16px;
+  border-inline-start: 4px solid var(--alert-color);
+
+  & p {
+    margin: 0;
+  }
+
+  & .markdown-alert-title {
+    color: var(--alert-color);
+    font-weight: 700;
+    margin-block-end: 16px;
+  }
+}
