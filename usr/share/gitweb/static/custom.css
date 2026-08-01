@@ -128,6 +128,13 @@ div.readme {
   & tr:nth-child(even) {
     background-color: hsl(216deg 50% 97% / 0.45);
   }
+
+  & blockquote {
+    color: #59636e;
+    margin: 0;
+    padding-inline-start: 16px;
+    border-inline-start: 4px solid #d1d9e0;
+  }
 }
 
 div.title_text {
